@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [JobController::class, 'index'])->name('home');
+Route::get('jobs/{job:slug}',[JobController::class, 'show']);
