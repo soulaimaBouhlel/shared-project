@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('location');
             $table->text('requirements');
             $table->text('description');
-            $table->unsignedInteger('salary');
+            $table->string('salary');
+            $table->boolean('is_active')->default(true);
             $table->timestamp('published_at')->nullable();
 
             $table->timestamps();
