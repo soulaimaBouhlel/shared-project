@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('requirements');
             $table->text('description');
             $table->string('salary');
+            $table->boolean('is_active')->default(true);
             $table->timestamp('published_at')->nullable();
 
             $table->timestamps();
