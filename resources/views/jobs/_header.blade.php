@@ -9,10 +9,7 @@
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
             <i class="fas fa-search mr-2"></i>
 
-            <form method="GET" action="/">
-                @if (request('tag'))
-                    <input type="hidden" name="tag" value="{{ request('tag') }}">
-                @endif
+            <form method="GET" action="{{url('/')}}">
 
                 <input type="text"
                        name="search"
