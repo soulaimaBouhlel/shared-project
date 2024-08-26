@@ -22,8 +22,8 @@ class JobFactory extends Factory
             'title' => fake()->jobTitle(),
             'location' => $this->faker->sentence(),
             'slug' => $this->faker->slug(),
-            'description' => '<p>' . implode('</p><p>', $this->faker->paragraphs(2)) . '</p>',
-            'requirements' => '<p>' . implode('</p><p>', $this->faker->paragraphs(2)) . '</p>',
+            'description' => $this->faker->text(50),
+            'requirements' =>$this->faker->text(10),
             'salary' => '$50,000 USD',
 
         ];
