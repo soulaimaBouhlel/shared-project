@@ -15,17 +15,31 @@ class Job extends Model
         $query->where('title', 'like', '%' . $search . '%')
             ->orWhere('description', 'like', '%' . $search . '%')
             ->orWhereHas('tags', fn($query) =>
-            $query->where('name', 'like', '%' . $search . '%')
+            $query
+                ->where('name', 'like', '%' . $search . '%')
+
             )
         )
         );
 
 
-        $query->when($filters['tag'] ?? false, fn($query, $tag) =>
-        $query->whereHas('tags', fn ($query) =>
-        $query->where('tag_id', $tag)
-        )
-        );
+            $query->when($filters['tag'] ?? false, fn($query, $tag) =>
+            $query->whereHas('tags', fn ($query) =>
+            $query->where('tag_id', $tag)
+            )
+                    ->join('job_tag', 'jobs.id', '=', 'job_tag.job_id')
+                    ->join('tags', 'tags.id', '=', 'job_tag.tag_id')
+                    ->orderBy('job_tag.weight', 'desc')
+                    ->select('jobs.*')
+                    ->distinct()
+
+
+            );
+
+
+
+
+
     }
 
     public function author()

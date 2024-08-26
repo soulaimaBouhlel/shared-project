@@ -9,7 +9,7 @@ class JobController extends Controller
 {
     public function index(){
         // This is a view for list of jobs
-        return view('jobs.index', ['jobs' => Job::latest()->filter(
+        return view('jobs.index', ['jobs' => Job::filter(
             request(['search', 'tag'])
         )->paginate(18)->withQueryString()
         ]);
