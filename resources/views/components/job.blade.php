@@ -29,7 +29,7 @@
         <div class="space-x-2">
 
             @foreach ($job->tags as $tag)
-                <x-tag-button
+            <x-tag-button
                     :tag="$tag"
                 />
             @endforeach
