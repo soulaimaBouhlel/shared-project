@@ -35,6 +35,6 @@
             @endforeach
 
         </div>
-        <a href="#" class="text-blue-500 hover:text-blue-700 text-sm font-semibold">View Details</a>
+        <a href="{{url('/jobs/'. $job->slug )}}" class="text-blue-500 hover:text-blue-700 text-sm font-semibold">View Details</a>
     </div>
 </article>

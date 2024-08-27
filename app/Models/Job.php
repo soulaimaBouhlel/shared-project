@@ -41,6 +41,17 @@ class Job extends Model
 
 
     }
+    public function relatedJobs()
+    {
+        $tags = $this->tags->pluck('id');
+        return self::whereHas('tags', function ($query) use ($tags) {
+            $query->whereIn('tags.id', $tags);
+        })
+            ->where('id', '!=', $this->id)
+            ->limit(5)
+            ->get();
+
+    }
 
     public function author()
     {
