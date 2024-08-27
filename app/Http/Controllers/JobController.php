@@ -15,7 +15,10 @@ class JobController extends Controller
         ]);
     }
     public function show(Job $job){
-        // This is a view for list of jobs
-        return view('jobs.show', ['job' => $job ]);
+        $relatedJobs = $job->relatedJobs();
+        return view('jobs.show', [
+            'job' => $job,
+            'relatedJobs' => $relatedJobs]);
     }
 }
+
